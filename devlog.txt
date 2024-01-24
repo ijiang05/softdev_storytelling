@@ -1,0 +1,142 @@
+POPEYES
+Vivian Teo
+Ian Jiang
+Lauren Lee
+pd 7
+---------------------
+P00: Collaborative Storytelling
+
+
+ ______   ______   __   __   __       ______   _______     
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+==============================================================
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+vivianT -- 2022-11-02 20:45
+--------------------------------------------------------------
+* edited design doc:
+    * In "How each component relates to each other section" under the search.html description, changed "words" to "titles" to clarify that the user is searching for story titles.
+    * In "Site map for front end" /home: Specified more what the home page will look like (stories the user has contributed to will be displayed) --> scroll based
+    * In "Site map for front end" /edit: Specified that the user cannot delete content, can only add
+    * In "Site map for front end" /edit: Specified that user cannot contribute to a story they've already contributed to
+    * In "Components": Gave descriptions for users.db and edits.db
+    * In "Components": Specified what db.py is (not a database but a python file used to organize our databases and write SQL code)
+==============================================================
+laurenL -- 2022-11-07 13:00
+--------------------------------------------------------------
+* created login.html 
+* created app.py
+* edited already existing login.html code from previous homework to include a register form
+==============================================================
+laurenL -- 2022-11-08 15:56
+--------------------------------------------------------------
+* formatted register and login button form in login.html
+* noted next steps on login.html and app.py
+* created db_user.py to add user info into db
+==============================================================
+vivianT -- 2022-11-09 12:45
+--------------------------------------------------------------
+* rendered home.html template for /home route
+* only pop username from session if it actually exists in session
+==============================================================
+laurenL -- 2022-11-09 22:58
+--------------------------------------------------------------
+* organized repo
+* added launch codes in readme
+==============================================================
+vivianT -- 2022-11-09 23:22
+--------------------------------------------------------------
+* created function in db_user.py to add usernames and passwords to the database (still an error that needs to be fixed)
+* created function in db_user.py to create the tables users.db and edits.db
+* created function in db_user.py to check if a user exists in the database
+* display the username in the home.html when logged in
+==============================================================
+vivianT -- 2022-11-10 13:20
+--------------------------------------------------------------
+* continuing to debug the user_does_not_exists(user) and add_user(user, passw) functions in db_user.py so that you can't add a user already in the table
+* add_user(user,passw) works properly now (SQL command has quotes around variables)
+==============================================================
+vivianT -- 2022-11-10 19:04
+--------------------------------------------------------------
+* user_does_not_exists(user) can now properly check if username is in table
+* created correct_account(user,passw) function in db_user.py to check if a username and password exist in the users table for logging in.
+* implemented correct_account(user,passw) in __init__.py in the /auth route so that when logging in, we can verify if the account information inputted is actually correct. If not, a message is displayed at the top of the screen.
+* when registeration is successful, the user is sent into the home page and a new sessions is made.
+* made a form in home.html (when user is logged in) so that the user can make a new story, have yet to add the data into the table, so for now, clicking submit does nothing
+* created a submit route in __init__.py
+* CONCERN: how to make it so that user can't just type http://127.0.0.1:5000/auth into the browser and get error... basically we only want to limit what happens in /auth after the login button is pressed
+==============================================================
+ianJ -- 2022-11-11 1:31
+--------------------------------------------------------------
+* new stories get added to edits.db
+* added title input box for creating new stories (has yet to be formatted nicely)
+* created add_story and story_does_not_exist functions in db_user.py (response for when duplicate story title needs to be made)
+* attempted to update the list of stories the user has contributed to. Made add_to_contributed and get_id function but there are bugs that need to be fixed
+==============================================================
+vivianT -- 2022-11-13 1:18
+--------------------------------------------------------------
+* Formatted the form submission for Title and Content better in home.html
+* If the user submits a story that already exists, output a message on home.html that lets the user know
+* add_to_contributed(title, user) now works; story_id is successfully added to the list in users.db, the users in users.db can now have a list of story ids they've contributed to
+* Created all_stories_contributed_to(user) in db_user.py so that it'll output a dict containing all the stories a user has contributed to with the title being the key and content being the value
+* Successfully incorporated/displayed the stories a user has contributed to using jinja in home.html and the dict that's outputted by all_stories_contributed_to(user)
+==============================================================
+laurenL -- 2022-11-13 21:27
+--------------------------------------------------------------
+* created table of contents that displayed each story
+* used dynamic routing to display content of story based on whether or not user contributed to the story
+* created story.html as a template to hold contents of a story
+* in __init__.py created view_story(id)
+* in db_user.py created see_full(user, id) which returned whether the user could see the full contents of a story
+* in db_user.py, careted story_content(user, id) which displayed content based on see_full()
+* in db_user.py create get_all_stories(user) which was used to display all the stories in the table of contents
+==============================================================
+vivianT -- 2022-11-13 23:48
+--------------------------------------------------------------
+* Made it so that the title of each story is displayed in the /story route as well (not just content)
+* Made it so that users can now add to story with a form in the /story route
+* Created the function add_to_story(user,text) in db_user.py so we can add to stories
+==============================================================
+laurenL -- 2022-11-14 10:11
+--------------------------------------------------------------
+* fix see_full() by converting string id to int to allow comparison
+* output error is user tries to contribute to a story they've already contributed to
+* allow user to go back home or login from the /story/<id> page
+==============================================================
+laurenL -- 2022-11-14 12:00
+--------------------------------------------------------------
+* make db files into two files depending on which db it edits
+* try converting fstrings to ?
+==============================================================
+laurenL, vivianTeo, ianJ -- 2022-11-14 13:19
+--------------------------------------------------------------
+* fixing all of lauren's bugs 
+  * bunch of column not found errors which was fixed by making sure the variables in the sqlite commands were formatted like strings
+* figuring out why when a user edits a story it is not added to their contributed
+==============================================================
+laurenL-- 2022-11-14 18:11
+--------------------------------------------------------------
+* moved back the db methods into one file
+* fixed bug of user contribution
+* convert fstirngs to ? placeholder
+  * error: Incorrect number of bindings supplied. The current statement uses 1, and there are 4 supplied.
+  * resolved by formatting as a tuple
+* make register require input
+==============================================================
+laurenL, ianJ -- 2022-11-14 22:19
+--------------------------------------------------------------
+* organize code and comment
+* last test run 
+* get rid of unecesary code & add headings
+==============================================================
+vivianT -- 2022-11-14 23:50
+--------------------------------------------------------------
+* Updated our design doc
+* Final testing/looking over
+==============================================================

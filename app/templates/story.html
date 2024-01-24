@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- 
+POPEYES: Lauren Lee, Vivian Teo, Ian Jiang
+SoftDev
+K19 -- Sessions Greetings
+2022-11-15
+time spent: 23.3
+-->
+<html>
+
+    <head>
+      <title> STORY </title>
+    </head>
+  
+    <body>
+      <h1>
+        POPEYES: Lauren Lee, Vivian Teo, Ian Jiang
+      </h1>
+      <br>
+      <h3>{{title}}</h3>
+      <p>
+        {{content}}
+      </p>
+
+      <h3>Add to Story:</h3>
+      <form action="/edit/{{id}}" method="POST">
+        <input type="text" name="text">
+        <input type="submit" name="Add" value="Add"></input>
+      </form> 
+      <br>
+      {{message}}
+
+      <br>
+      <form action="/home" method="POST">
+        <input type="submit" name="home" value="home"></input>
+      </form>
+      <br>
+      <form action="/logout" method="POST">
+        <input type="submit" name="logout" value="Logout"></input>
+      </form>
+
+      <!-- back button -->
+      <!-- <form action="/auth" method="POST">
+        <input type="submit" name="back" value="Back"></input>
+      </form> -->
+
+    </body>
+</html>

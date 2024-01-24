@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<!-- 
+POPEYES: Lauren Lee, Vivian Teo, Ian Jiang
+SoftDev
+K19 -- Sessions Greetings
+2022-11-15
+time spent: 23.3
+-->
+
+<html>
+
+  <head>
+    <title> LOGIN </title>
+  </head>
+
+  <body>
+    <h1>
+      POPEYES: Lauren Lee, Vivian Teo, Ian Jiang
+    </h1>
+
+
+    <h3>
+      {{message}}
+    </h3>
+    <strong>LOGIN</strong>
+    <form action="/auth" method="POST"> 
+      <!-- action when form submit is set by action=, this cause is sent to new page on webpage-->
+      Username:
+      <input type="text" name="username">
+      <!--text input, name give label for reference  -->
+      <br> Password:
+      <input type="text" name="pass">
+      <!--text input, name give label for reference  -->
+      <br>
+      <input type="submit" name="login" value = "login"> 
+      <!--submit button, name give label for reference  -->
+    </form>
+    <br>
+    <strong>REGISTER</strong>
+    <form action="/home" method="POST">
+      Username:
+      <input type="text" name="username">
+      <br> Password:
+      <input type="text" name="pass">
+      <br>
+      <input type="submit" name="register" value = "register"> 
+    </form>
+    <br>
+  </body>
+
+</html>

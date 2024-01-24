@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- 
+POPEYES: Lauren Lee, Vivian Teo, Ian Jiang
+SoftDev
+K19 -- Sessions Greetings
+2022-11-15
+time spent: 23.3
+-->
+<html>
+
+    <head>
+      <title> HOME </title>
+    </head>
+  
+    <body>
+      <h1>
+        POPEYES: Lauren Lee, Vivian Teo, Ian Jiang
+      </h1>
+  
+  
+      <h3>
+        user: {{username}} <br><br>
+
+        TABLE OF CONTENTS <br>
+        {% for x in all_stories %}    
+          <a href="/story/{{all_stories[x]}}">{{x}}</a><br>
+        {% endfor %}
+        <br>
+
+        Write a NEW story:
+        <form action="/submit" method="POST">
+          <br> Title:
+          <input type="text" name="title">
+          <br> Content:
+          <input type="text" name="text">
+          <input type="submit" name="story" value="Submit Story"></input>
+        </form>
+
+        {{message}} <br>
+        
+      </h3>
+
+      <h3> Stories You've Contributed To: </h3>
+
+      <h4>
+      {% for id in stories %}      
+      <b> 
+        Title: {{stories[id][0]}} <br>
+      </b>
+      Content: {{stories[id][1]}}<br><br>
+      {% endfor %}
+      </h4>
+
+      <form action="/logout" method="POST">
+        <input type="submit" name="logout" value="Logout"></input>
+      </form>
+
+      <br>
+    </body>
+  
+  </html>
+  
